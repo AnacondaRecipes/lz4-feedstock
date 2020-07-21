@@ -19,14 +19,14 @@ requirements:
   build:
     - {{ compiler('c') }}
   host:
-    - python >=3.5
+    - python
     - pip
     - pytest-runner
     - setuptools_scm
     - pkgconfig
     - lz4-c
   run:
-    - python >=3.5
+    - python
     - lz4-c
 
 test:

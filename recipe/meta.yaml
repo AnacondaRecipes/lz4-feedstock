@@ -1,6 +1,6 @@
 {% set name = "lz4" %}
-{% set version = "3.1.0" %}
-{% set sha256 = "debe75513db3eb9e5cdcd82a329ff38374b6316ab65b848b571e0404746c1e05" %}
+{% set version = "3.1.2" %}
+{% set sha256 = "8253f2bb118715d3f728d21e26d27edb3bb39de4ac606b1403c417a6c008b080" %}
 
 package:
   name: {{ name|lower }}

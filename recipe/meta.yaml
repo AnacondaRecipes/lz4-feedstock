@@ -51,7 +51,7 @@ about:
     Provides a Python interface for the LZ4 compression library.
     LZ4 library provides support for three specifications-
     frame format,block format and stream format.
-  doc_url: http://python-lz4.readthedocs.io
+  doc_url: https://python-lz4.readthedocs.io
   dev_url: https://github.com/python-lz4/python-lz4
 
 extra:

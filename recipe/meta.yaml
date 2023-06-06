@@ -27,7 +27,7 @@ requirements:
     - setuptools_scm
     - toml
     - wheel
-    - pkgconfig
+    - pkgconfig {{ pkgconfig }}
     - lz4-c 1.9.4
   run:
     - python

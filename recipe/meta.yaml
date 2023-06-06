@@ -14,7 +14,7 @@ build:
   ignore_run_exports:
     - lz4-c  # [win]
   number: 0
-  script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install --no-deps --no-build-isolation --ignore-installed .
   skip: True  # [py<37]
 
 requirements:
@@ -27,7 +27,7 @@ requirements:
     - setuptools_scm
     - toml
     - wheel
-    - pkgconfig
+    - pkgconfig 1.5.4
     - lz4-c 1.9.4
   run:
     - python

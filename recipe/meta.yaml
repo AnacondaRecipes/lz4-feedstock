@@ -16,7 +16,7 @@ build:
 
 requirements:
   build:
-    - {{ cstdlib('c') }}
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
   host:
     - python

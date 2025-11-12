@@ -6,40 +6,47 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 5f0b9e53c1e82e88c10d7c180069363980136b9d7a8306c4dca4f760d60c39f0
 
 build:
-  ignore_run_exports:
-    - lz4-c  # [win]
+  # ignore_run_exports:
+    # - lz4-c  # [win]
   number: 0
   script: {{ PYTHON }} -m pip install --no-deps --no-build-isolation --ignore-installed .
-  skip: true  # [py<37]
+  skip: true  # [py<39]
 
 requirements:
   build:
+    # - {{ cstdlib('c') }}
     - {{ compiler('c') }}
   host:
     - python
     - pip
-    - setuptools
-    - setuptools-scm
+    - setuptools >=45
+    - setuptools-scm >=6.2
     - toml
     - wheel
     - pkgconfig
-    - lz4-c 1.9.4
+    - lz4-c
   run:
     - python
-    - {{ pin_compatible('lz4-c', max_pin='x.x') }}
+    - lz4-c # bounds through run_exports
+    # - {{ pin_compatible('lz4-c', max_pin='x.x') }}
 
 test:
+  source_files:
+    - tests
   imports:
     - lz4
   requires:
     - pip
+    - pytest
+    - psutil
   commands:
     - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - pytest -v tests --ignore=tests/stream
 
 about:
   home: https://github.com/python-lz4/python-lz4
